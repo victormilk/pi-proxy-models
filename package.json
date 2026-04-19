@@ -17,5 +17,13 @@
     "pi-package",
     "pi",
     "pi-coding-agent"
-  ]
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "devDependencies": {
+    "@mariozechner/pi-coding-agent": "^0.67.68"
+  }
 }
