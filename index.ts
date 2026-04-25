@@ -209,24 +209,10 @@ function inferImageInput(id: string): boolean {
 	);
 }
 
-// Detect explicit context-window markers embedded in the model id
-// (e.g. "claude-opus-4-7-1m", "claude-sonnet-4-5[1m]", "claude-opus-4-5-256k").
-// CLIProxyAPIPlus exposes long-context Claude variants this way, so the
-// hardcoded 200k default for anything matching "claude" is wrong for them.
-function explicitContextWindow(id: string): number | undefined {
-	const l = id.toLowerCase();
-	const m = l.match(/(?:^|[^a-z0-9])(\d+)\s*([mk])(?![a-z0-9])/);
-	if (!m) return undefined;
-	const n = Number(m[1]);
-	if (!Number.isFinite(n) || n <= 0) return undefined;
-	return m[2] === "m" ? n * 1_000_000 : n * 1_000;
-}
-
 function inferLimits(id: string): { contextWindow: number; maxTokens: number } {
 	const l = id.toLowerCase();
-	const explicit = explicitContextWindow(id);
-	if (l.includes("claude-opus")) return { contextWindow: explicit ?? 200_000, maxTokens: 32_000 };
-	if (l.includes("claude")) return { contextWindow: explicit ?? 200_000, maxTokens: 64_000 };
+	if (l.includes("claude-opus")) return { contextWindow: 200_000, maxTokens: 32_000 };
+	if (l.includes("claude")) return { contextWindow: 200_000, maxTokens: 64_000 };
 	if (l.includes("gemini-2.5") || l.includes("gemini-3")) return { contextWindow: 1_000_000, maxTokens: 65_536 };
 	if (l.includes("gemini")) return { contextWindow: 1_000_000, maxTokens: 8_192 };
 	if (l.includes("gpt-5")) return { contextWindow: 400_000, maxTokens: 16_384 };
