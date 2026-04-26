@@ -1,29 +1,29 @@
 {
-  "name": "pi-proxy-models",
-  "version": "0.0.3",
-  "description": "Pi extension",
-  "homepage": "https://github.com/victormilk/pi-proxy-models#readme",
-  "bugs": {
-    "url": "https://github.com/victormilk/pi-proxy-models/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/victormilk/pi-proxy-models.git"
-  },
-  "license": "ISC",
-  "author": "Victor Leite Costa",
-  "type": "module",
-  "keywords": [
-    "pi-package",
-    "pi",
-    "pi-coding-agent"
-  ],
-  "pi": {
-    "extensions": [
-      "./index.ts"
-    ]
-  },
-  "devDependencies": {
-    "@mariozechner/pi-coding-agent": "^0.67.68"
-  }
+	"name": "pi-proxy-models",
+	"version": "0.0.4",
+	"description": "Pi coding-agent extension that exposes CLIProxyAPIPlus models (Claude, Gemini, OpenAI/Codex, Copilot, Kiro, GLM, Qwen, ...) to pi's model picker, routing each family through its native streaming API (anthropic-messages, openai-completions, google-generative-ai) so features like prompt caching and thinking work end-to-end.",
+	"homepage": "https://github.com/victormilk/pi-proxy-models#readme",
+	"bugs": {
+		"url": "https://github.com/victormilk/pi-proxy-models/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/victormilk/pi-proxy-models.git"
+	},
+	"license": "ISC",
+	"author": "Victor Leite Costa",
+	"type": "module",
+	"keywords": [
+		"pi-package",
+		"pi",
+		"pi-coding-agent"
+	],
+	"pi": {
+		"extensions": [
+			"./index.ts"
+		]
+	},
+	"devDependencies": {
+		"@mariozechner/pi-coding-agent": "^0.67.68"
+	}
 }
